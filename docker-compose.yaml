@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  todo_backend_v3_db:
+    image: mysql:5.7.22
+    environment:
+      MYSQL_DATABASE: todo
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./storage/dbdata:/var/lib/mysql
+    ports:
+      - 3380:3306
+
+  todo_backend_v3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 8800:8000
+    depends_on:
+      - todo_backend_v3_db
