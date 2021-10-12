@@ -52,7 +52,7 @@ class LoginController extends Controller
                     'status' => 0,
                     'access_token' => $token,
                     'token_type' => 'Bearer',
-                    'message' => 'User created successfully',
+                    'message' => 'User logged in successfully',
                     'data' => [
                         'user' => $user
                     ]
