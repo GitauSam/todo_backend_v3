@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Task\TaskActionController;
 use App\Http\Controllers\Task\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +29,6 @@ Route::prefix('v1')->group(function() {
     Route::middleware('auth:sanctum')->group(function() {
         Route::get('/logout', [LoginController::class, 'logout']);
         Route::apiResource('task', TaskController::class);
+        Route::get('/task/complete/{id}', [TaskActionController::class, 'markComplete']);
     });
 });
